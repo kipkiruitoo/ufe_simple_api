@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Centre;
 use App\Civil;
+use App\County;
+use App\Http\Resources\Service;
+use App\MDA;
 use App\Nrb;
 use App\Ntsa;
 use Illuminate\Http\Request;
@@ -34,5 +38,40 @@ class ApiController extends Controller
         $results = Ntsa::where('id_no', $q)->get();
 
         return response()->json(["success" => true, 'query' => $q, 'message' => 'Ntsa Records retrieved successfully', 'results' => $results]);
+    }
+
+    public function getCenters()
+    {
+        $results =  Centre::all();
+        return response()->json(["success" => true, 'query' => 'all centers', 'message' => 'Huduma Centres  retrieved successfully', 'results' => $results]);
+    }
+
+    public function getCounties()
+    {
+        $results =  County::all();
+        return response()->json(["success" => true, 'query' => 'all counties', 'message' => 'Counties  retrieved successfully', 'results' => $results]);
+    }
+
+
+    public function getMdas()
+    {
+        $results =  MDA::all();
+        return response()->json(["success" => true, 'query' => 'all mdas', 'message' => 'MDas  retrieved successfully', 'results' => $results]);
+    }
+
+    public function getMdaService($mda)
+    {
+
+        $mda =  MDA::find($mda);
+        $services = $mda->services;
+        return response()->json(["success" => true, 'query' => $mda->name, 'message' => 'Services for ' . $mda->name . '  retrieved successfully', 'results' => Service::collection($services)]);
+    }
+
+    public function getCenterServices($center)
+    {
+        $center = Centre::find($center);
+
+        $services = $center->services;
+        return response()->json(["success" => true, 'query' => $center->name, 'message' => 'Services for ' . $center->name . '  retrieved successfully', 'results' => Service::collection($services)]);
     }
 }
