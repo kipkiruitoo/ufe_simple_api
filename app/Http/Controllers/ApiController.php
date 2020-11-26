@@ -74,4 +74,12 @@ class ApiController extends Controller
         $services = $center->services;
         return response()->json(["success" => true, 'query' => $center->name, 'message' => 'Services for ' . $center->name . '  retrieved successfully', 'results' => Service::collection($services)]);
     }
+
+    public function getTrendingServices()
+    {
+        $services =  \App\Service::all()->inRandomOrder()
+            ->limit(6);
+
+        return response()->json(["success" => true, 'query' => 'trending services', 'message' => 'Trending services retrieved successfully', 'results' => Service::collection($services)]);
+    }
 }
