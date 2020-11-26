@@ -33,3 +33,6 @@ Route::get('/counties', 'ApiController@getCounties');
 // mda routes
 Route::get('/mdas', 'ApiController@getMdas');
 Route::get('/mdas/{mda}/services', 'ApiController@getMdaService');
+
+// trending services
+Route::get('/services/trending', 'ApiController@getTrendingServices');
