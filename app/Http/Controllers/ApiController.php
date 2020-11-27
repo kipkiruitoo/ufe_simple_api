@@ -102,7 +102,7 @@ class ApiController extends Controller
 
         $results = \App\Service::where('servicename', '%' . $q . '%')->orWhere('details', 'LIKE', '%' . $q . '%')->get();
 
-        return response()->json(["success" => true, 'query' => $q,  'message' => 'Huduma Centers retrieved successfully', 'results' => $results]);
+        return response()->json(["success" => true, 'query' => $q,  'message' => 'Huduma Centers retrieved successfully', 'results' => Service::collection($results)]);
     }
 
 
