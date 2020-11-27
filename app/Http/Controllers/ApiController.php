@@ -81,4 +81,37 @@ class ApiController extends Controller
 
         return response()->json(["success" => true, 'query' => 'trending services', 'message' => 'Trending services retrieved successfully', 'results' => Service::collection($services)]);
     }
+
+
+
+
+    // search routes
+
+    public function searchCentre(Request $request)
+    {
+        $q = $request->query('q');
+
+        $results = Centre::where('name', $q)->get();
+
+        return response()->json(["success" => true, 'query' => $q,  'message' => 'Huduma Centers retrieved successfully', 'results' => $results]);
+    }
+
+    public function searchService(Request $request)
+    {
+        $q = $request->query('q');
+
+        $results = \App\Service::where('servicename', $q)->get();
+
+        return response()->json(["success" => true, 'query' => $q,  'message' => 'Huduma Centers retrieved successfully', 'results' => $results]);
+    }
+
+
+    public function searchMda(Request $request)
+    {
+        $q = $request->query('q');
+
+        $results = MDA::where('name', $q)->get();
+
+        return response()->json(["success" => true, 'query' => $q,  'message' => 'Huduma Centers retrieved successfully', 'results' => $results]);
+    }
 }
