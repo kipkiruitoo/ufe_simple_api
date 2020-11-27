@@ -100,7 +100,7 @@ class ApiController extends Controller
     {
         $q = $request->query('q');
 
-        $results = \App\Service::where('servicename', '%' . $q . '%')->get();
+        $results = \App\Service::where('servicename', '%' . $q . '%')->orWhere('details', 'LIKE', '%' . $q . '%')->get();
 
         return response()->json(["success" => true, 'query' => $q,  'message' => 'Huduma Centers retrieved successfully', 'results' => $results]);
     }
@@ -110,7 +110,7 @@ class ApiController extends Controller
     {
         $q = $request->query('q');
 
-        $results = MDA::where('name', 'LIKE',  '%' . $q . '%')->get();
+        $results = MDA::where('name', 'LIKE',  '%' . $q . '%')->orWhere('code', 'LIKE', '%' . $q . '%')->get();
 
         return response()->json(["success" => true, 'query' => $q,  'message' => 'Huduma Centers retrieved successfully', 'results' => $results]);
     }
