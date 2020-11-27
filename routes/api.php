@@ -27,7 +27,7 @@ Route::get('/search/civil', 'ApiController@civilsearch');
 // center routes
 Route::get('/centres', 'ApiController@getCenters');
 Route::get('/centres/{center}/services', 'ApiController@getCenterServices');
-Route::get('/centres/search', 'ApiController@searchService');
+Route::get('/search/centres', 'ApiController@searchCentre');
 
 // county routes
 Route::get('/counties', 'ApiController@getCounties');
@@ -35,7 +35,7 @@ Route::get('/counties', 'ApiController@getCounties');
 // mda routes
 Route::get('/mdas', 'ApiController@getMdas');
 Route::get('/mdas/{mda}/services', 'ApiController@getMdaService');
-Route::get('mdas/search', 'ApiController@searchMda');
+Route::get('search/mda', 'ApiController@searchMda');
 
 // trending services
 Route::get('/services/trending', 'ApiController@getTrendingServices');
