@@ -21,8 +21,8 @@ class ApiController extends Controller
 
         $client = new \GuzzleHttp\Client();
         $res = $client->get($url . $q);
-        $res->getStatusCode(); // 200
-        dd($res->getBody());
+        echo $res->getStatusCode(); // 200
+        echo $res->getBody();
     }
 
     public function civilsearch(Request $request)
