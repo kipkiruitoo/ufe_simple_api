@@ -17,14 +17,19 @@ class ApiController extends Controller
     {
         $q = $request->query('q');
 
-        $results = Nrb::where('id_no', $q)->get();
+        $url = "https://10.65.70.64:5623/api/nrb?q=";
 
-        return response()->json(["success" => true, 'query' => $q, 'message' => 'Nrb Records retrieved successfully', 'results' => $results]);
+        $client = new \GuzzleHttp\Client();
+        $res = $client->get($url . $q);
+        $res->getStatusCode(); // 200
+        dd($res->getBody());
     }
 
     public function civilsearch(Request $request)
     {
         $q = $request->query('q');
+
+        $url = "https://10.65.70.64:5623/api/civil";
 
         $results = Civil::where('phone',  $q)->get();
 
@@ -34,6 +39,8 @@ class ApiController extends Controller
     public function ntsasearch(Request $request)
     {
         $q = $request->query('q');
+
+        $url = "https://10.65.70.64:5623/api/ntsa";
 
         $results = Ntsa::where('id_no', $q)->get();
 
@@ -90,6 +97,8 @@ class ApiController extends Controller
     public function searchCentre(Request $request)
     {
         $q = $request->query('q');
+
+
 
         $results = Centre::where('name', '%' . $q . '%')->get();
 
