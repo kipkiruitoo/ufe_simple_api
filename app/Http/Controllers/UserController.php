@@ -16,11 +16,11 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'national_id' => 'required|numeric',
+            'id_number' => 'required|numeric',
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('id_number', $request->id_number)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             // throw ValidationException::withMessages([
@@ -43,10 +43,11 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            // 'phone' => 'required|unique:users|regex:/(0)[0-9]{10}/',
+            'phone' => 'required|unique:users|regex:/(0)[0-9]{10}/',
+            'id_number' => 'required|numeric|unique:users,id_number',
             'email' => 'required|email|unique:users',
             'password' => 'required',
-            'device_name' => 'required',
+            // 'device_name' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json([
