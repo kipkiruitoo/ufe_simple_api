@@ -25,6 +25,9 @@ Route::post('/user/register', 'UserController@register');
 Route::post('/user/login', 'UserController@login');
 
 
+Route::post('/user/validate', 'UserController@validate')
+
+
 Route::get('/search/nrb', 'ApiController@nrbsearch');
 Route::get('/search/ntsa', 'ApiController@ntsasearch');
 Route::get('/search/civil', 'ApiController@civilsearch');
