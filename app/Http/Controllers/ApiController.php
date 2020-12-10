@@ -17,7 +17,7 @@ class ApiController extends Controller
     {
         $q = $request->query('q');
 
-        $url = "https://10.65.70.64:5623/api/nrb?q=";
+        $url = "http://10.65.70.64:5623/api/nrb?q=";
 
         $client = new \GuzzleHttp\Client();
         $res = $client->get($url . $q);
