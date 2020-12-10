@@ -24,7 +24,7 @@ class ApiController extends Controller
         // echo $url . $q;
         $res = $client->get($url . $q);
         // echo $res->getStatusCode(); // 200
-        echo $res->getBody();
+        dd($res->getBody());
     }
 
     public function civilsearch(Request $request)
