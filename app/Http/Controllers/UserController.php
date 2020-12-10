@@ -75,6 +75,6 @@ class UserController extends Controller
         $client = new \GuzzleHttp\Client();
         $res = $client->get('http://10.65.70.120/hudumaapi/citizen/read_one.php?id= ' . $id . '&accesskey=H9950P4bx3LiZJRr7UddmjXhBoewoq0O:Brh6zdIjGvze5PBuzc7NqGh3oWxUtEa7chzuzw4SN7MdO6k7UPjduHYx4hzmNsgv');
         $res->getStatusCode(); // 200
-        return  $res->getBody(); // { "type": "User", ....
+        return response()->json([$res->getBody()]);   // { "type": "User", ....
     }
 }
