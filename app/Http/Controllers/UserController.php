@@ -67,7 +67,7 @@ class UserController extends Controller
     }
 
 
-    public function validate(Request $request)
+    public function validateUser(Request $request)
     {
 
         $id = $request->query('id');

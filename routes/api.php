@@ -25,7 +25,7 @@ Route::post('/user/register', 'UserController@register');
 Route::post('/user/login', 'UserController@login');
 
 
-Route::get('/user/validate', 'UserController@validate');
+Route::get('/user/validate', 'UserController@validateUser');
 
 
 Route::get('/search/nrb', 'ApiController@nrbsearch');
