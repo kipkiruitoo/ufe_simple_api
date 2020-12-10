@@ -17,14 +17,14 @@ class ApiController extends Controller
     {
         $q = $request->query('q');
 
-        $url = "http://10.65.70.64:5623/api/nrb?q=";
+        $url = "http://10.65.70.64:5623/api/search/nrb?q=";
 
         $client = new \GuzzleHttp\Client();
 
-        echo $url . $q;
-        // $res = $client->get($url . $q);
+        // echo $url . $q;
+        $res = $client->get($url . $q);
         // echo $res->getStatusCode(); // 200
-        // echo $res->getBody();
+        echo $res->getBody();
     }
 
     public function civilsearch(Request $request)
