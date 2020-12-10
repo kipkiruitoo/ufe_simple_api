@@ -19,6 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+Route::post('/user/register', 'UserController@register');
+
+
+Route::post('/user/login', 'UserController@login');
+
+
 Route::get('/search/nrb', 'ApiController@nrbsearch');
 Route::get('/search/ntsa', 'ApiController@ntsasearch');
 Route::get('/search/civil', 'ApiController@civilsearch');
